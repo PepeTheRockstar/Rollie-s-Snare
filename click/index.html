@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beat Rollie's Snare Drum!</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ff0080;
+            font-family: Arial, sans-serif;
+
+            background-image: url(''); /* Replace 'images/background.jpg' with the path to your image */
+            background-size: cover; /* This will scale the image to cover the entire body */
+            background-repeat: no-repeat; /* This will prevent the image from repeating */
+        }
+        #score, #timer, #heading {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 2em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:active {
+            background-color: #ff0000;
+        }
+        #clicker {
+            background: url('Rollies Snare.png') no-repeat;
+            width: 256px;  /* Adjust based on your image's dimensions */
+            height: 256px; /* Adjust based on your image's dimensions */
+        }
+        #clicker {
+            /* ... */
+            transition: transform 0.1s;
+        }
+        #clicker:active {
+            transform: translateY(10px);
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div id="heading">Beat Rollie's Snare Drum</div>
+        <div id="score">Score: 0</div>
+        <div id="timer">Time: 60</div>
+        <button id="clicker"></button>
+    </div>
+<!-- Include your sound clip using the <audio> element -->
+    <audio id="snareSound" src="snare.mp3" preload="auto"></audio>
+
+    <script>
+        var score = 0;
+        var time = 60;
+        var timerId = null;
+        var snareSound = document.getElementById('snareSound');
+
+        document.getElementById('clicker').addEventListener('click', function() {
+            /* ... */
+
+            // Play the sound
+            snareSound.play();
+        });
+
+        document.getElementById('clicker').addEventListener('click', function() {
+            if (timerId === null) {
+                timerId = setInterval(function() {
+                    time--;
+                    document.getElementById('timer').textContent = 'Time: ' + time;
+                    if (time <= 0) {
+                        clearInterval(timerId);
+                        document.getElementById('clicker').disabled = true;
+                        alert('Game over! Your final score is ' + score);
+                    }
+                }, 1000);
+            }
+            score++;
+            document.getElementById('score').textContent = 'Score: ' + score;
+        });
+    </script>
+</body>
+</html>
+
+
