@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Beat Rollie's Snare Drum!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <style>
         body {
             display: flex;
@@ -61,7 +61,7 @@
     <audio id="snareSound" src="snare.mp3" preload="auto"></audio>
 
     <script>
-        var score = 0;
+         var score = 0;
         var time = 60;
         var timerId = null;
         var snareSound = document.getElementById('snareSound');
@@ -74,20 +74,6 @@
         });
 
         function incrementScore() {
-            /* ... */
-
-            // Play the sound
-            snareSound.play();
-        }
-
-        document.getElementById('clicker').addEventListener('click', function() {
-            /* ... */
-
-            // Play the sound
-            snareSound.play();
-        });
-
-        document.getElementById('clicker').addEventListener('click', function() {
             if (timerId === null) {
                 timerId = setInterval(function() {
                     time--;
@@ -101,9 +87,10 @@
             }
             score++;
             document.getElementById('score').textContent = 'Score: ' + score;
-        });
+
+            // Play the sound
+            snareSound.play();
+        }
     </script>
 </body>
 </html>
-
-
